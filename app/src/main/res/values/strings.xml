@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Game</string>
+    <string name="Score">Score:</string>
+    <string name="numbers_of_score">Количество очков</string>
+    <string name="Time">Time:</string>
+    <string name="Timer">10</string>
+    <string name="Start">Start</string>
+</resources>
