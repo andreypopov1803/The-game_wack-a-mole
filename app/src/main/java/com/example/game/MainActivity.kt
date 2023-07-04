@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.concurrent.timer
 import kotlin.reflect.typeOf
+import kotlin.system.measureTimeMillis
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,23 +38,38 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        var btnStart = findViewById<Button>(R.id.button)
 
-        fun main(){
-            var btnStart = findViewById<Button>(R.id.button)
-            btnStart.setOnClickListener {
-                fun main1(){
+        btnStart.setOnClickListener {
+            fun main() {
+
+                var score = findViewById<TextView>(R.id.textView18)
+                var count = 0
+
+                fun main1() {
                     val buttons = arrayOf(
-                        findViewById(R.id.btn1), findViewById(R.id.btn2), findViewById(R.id.btn3), findViewById(R.id.btn4),
-                        findViewById(R.id.btn5), findViewById(R.id.btn6), findViewById(R.id.btn7), findViewById(R.id.btn8),
-                        findViewById(R.id.btn9), findViewById(R.id.btn10), findViewById(R.id.btn11), findViewById(R.id.btn12),
-                        findViewById(R.id.btn13), findViewById(R.id.btn14), findViewById(R.id.btn15),findViewById<Button>(R.id.btn16))
-                    var count = 0
-                    var score = findViewById<TextView>(R.id.textView18)
+                        findViewById(R.id.btn1),
+                        findViewById(R.id.btn2),
+                        findViewById(R.id.btn3),
+                        findViewById(R.id.btn4),
+                        findViewById(R.id.btn5),
+                        findViewById(R.id.btn6),
+                        findViewById(R.id.btn7),
+                        findViewById(R.id.btn8),
+                        findViewById(R.id.btn9),
+                        findViewById(R.id.btn10),
+                        findViewById(R.id.btn11),
+                        findViewById(R.id.btn12),
+                        findViewById(R.id.btn13),
+                        findViewById(R.id.btn14),
+                        findViewById(R.id.btn15),
+                        findViewById<Button>(R.id.btn16)
+                    )
 
 
                     var button = buttons.random()
                     button.setBackgroundColor(Color.BLACK)
-
+                    score.text = count.toString()
                     button.setOnClickListener {
                         button.setBackgroundColor(Color.WHITE)
                         count++
@@ -127,41 +143,64 @@ class MainActivity : AppCompatActivity() {
                                                                     button = buttons.random()
                                                                     button.setBackgroundColor(Color.BLACK)
                                                                     button.setOnClickListener {
-                                                                        button.setBackgroundColor(Color.WHITE)
+                                                                        button.setBackgroundColor(
+                                                                            Color.WHITE
+                                                                        )
                                                                         count++
-                                                                        score.text = count.toString()
+                                                                        score.text =
+                                                                            count.toString()
                                                                         button = buttons.random()
-                                                                        button.setBackgroundColor(Color.BLACK)
+                                                                        button.setBackgroundColor(
+                                                                            Color.BLACK
+                                                                        )
                                                                         button.setOnClickListener {
-                                                                            button.setBackgroundColor(Color.WHITE)
+                                                                            button.setBackgroundColor(
+                                                                                Color.WHITE
+                                                                            )
                                                                             count++
-                                                                            score.text = count.toString()
-                                                                            button = buttons.random()
-                                                                            button.setBackgroundColor(Color.BLACK)
+                                                                            score.text =
+                                                                                count.toString()
+                                                                            button =
+                                                                                buttons.random()
+                                                                            button.setBackgroundColor(
+                                                                                Color.BLACK
+                                                                            )
                                                                             button.setOnClickListener {
                                                                                 button.setBackgroundColor(
-                                                                                    Color.WHITE)
+                                                                                    Color.WHITE
+                                                                                )
                                                                                 count++
-                                                                                score.text = count.toString()
-                                                                                button = buttons.random()
+                                                                                score.text =
+                                                                                    count.toString()
+                                                                                button =
+                                                                                    buttons.random()
                                                                                 button.setBackgroundColor(
-                                                                                    Color.BLACK)
+                                                                                    Color.BLACK
+                                                                                )
                                                                                 button.setOnClickListener {
                                                                                     button.setBackgroundColor(
-                                                                                        Color.WHITE)
+                                                                                        Color.WHITE
+                                                                                    )
                                                                                     count++
-                                                                                    score.text = count.toString()
-                                                                                    button = buttons.random()
+                                                                                    score.text =
+                                                                                        count.toString()
+                                                                                    button =
+                                                                                        buttons.random()
                                                                                     button.setBackgroundColor(
-                                                                                        Color.BLACK)
+                                                                                        Color.BLACK
+                                                                                    )
                                                                                     button.setOnClickListener {
                                                                                         button.setBackgroundColor(
-                                                                                            Color.WHITE)
+                                                                                            Color.WHITE
+                                                                                        )
                                                                                         count++
-                                                                                        score.text = count.toString()
-                                                                                        button = buttons.random()
+                                                                                        score.text =
+                                                                                            count.toString()
+                                                                                        button =
+                                                                                            buttons.random()
                                                                                         button.setBackgroundColor(
-                                                                                            Color.BLACK)
+                                                                                            Color.BLACK
+                                                                                        )
 
                                                                                     }
 
@@ -199,30 +238,36 @@ class MainActivity : AppCompatActivity() {
                 }
                 main1()
 
-                fun main2(){
+
+
+                fun main2() {
                     var timer = findViewById<TextView>(R.id.textView20)
-                    object : CountDownTimer(5000, 1000) {
+                    object : CountDownTimer(6000, 1000) {
                         override fun onFinish() {
                             timer.text = "Time ended"
+                            score.text = "Ваши очки: " + count
+
 
                         }
+
                         @SuppressLint("SetTextI18n")
                         override fun onTick(millisUntilFinished: Long) {
                             timer.text = "Time: " + millisUntilFinished / 1000
+
 
                         }
                     }.start()
                 }
                 main2()
+
             }
-
-
-
+            main()
         }
-        main()
 
 
     }
+
+
 
     override fun onPause() {
         super.onPause()
